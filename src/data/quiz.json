@@ -1,0 +1,648 @@
+{
+  "quizzes": [
+    {
+      "id": "quiz_1",
+      "title": "General Knowledge",
+      "description": "Test your basic understanding of geography, animals, history, and general facts around the globe.",
+      "thumbnail": "/images/quiz_1.jpg",
+      "category": "General Knowledge",
+      "difficulty": "Easy",
+      "timePerQuestion": 15,
+      "totalQuestions": 10,
+      "questions": [
+        {
+          "id": "quiz_1_q1",
+          "question": "What is the capital of India?",
+          "options": [ "Delhi", "Mumbai", "Pune", "Jaipur" ],
+          "correctAnswer": "Delhi",
+          "points": 10,
+          "explanation": "New Delhi is the official capital of India."
+        },
+        {
+          "id": "quiz_1_q2",
+          "question": "Which is the largest planet in our solar system?",
+          "options": [ "Earth", "Mars", "Jupiter", "Venus" ],
+          "correctAnswer": "Jupiter",
+          "points": 10,
+          "explanation": "Jupiter is the largest planet, with a mass more than two and a half times that of all the other planets combined."
+        },
+        {
+          "id": "quiz_1_q3",
+          "question": "Which is the fastest land animal?",
+          "options": [ "Tiger", "Leopard", "Cheetah", "Lion" ],
+          "correctAnswer": "Cheetah",
+          "points": 10,
+          "explanation": "The cheetah can reach speeds of between 80 and 128 km/h, making it the fastest land animal."
+        },
+        {
+          "id": "quiz_1_q4",
+          "question": "Which is the largest ocean on Earth?",
+          "options": [ "Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean" ],
+          "correctAnswer": "Pacific Ocean",
+          "points": 10,
+          "explanation": "The Pacific Ocean is the largest and deepest of Earth's oceanic divisions."
+        },
+        {
+          "id": "quiz_1_q5",
+          "question": "What is the currency of Japan?",
+          "options": [ "Yen", "Won", "Dollar", "Euro" ],
+          "correctAnswer": "Yen",
+          "points": 10,
+          "explanation": "The Japanese Yen (JPY) is the official currency of Japan."
+        },
+        {
+          "id": "quiz_1_q6",
+          "question": "In which country is Mount Everest located?",
+          "options": [ "India", "Nepal", "China", "Bhutan" ],
+          "correctAnswer": "Nepal",
+          "points": 10,
+          "explanation": "Mount Everest lies on the border between Nepal and Tibet (China), with the peak itself in Nepal."
+        },
+        {
+          "id": "quiz_1_q7",
+          "question": "How many continents are there on Earth?",
+          "options": [ "5", "6", "7", "8" ],
+          "correctAnswer": "7",
+          "points": 10,
+          "explanation": "Earth is conventionally divided into seven continents: Asia, Africa, North America, South America, Antarctica, Europe, and Australia."
+        },
+        {
+          "id": "quiz_1_q8",
+          "question": "What common liquid is chemically represented by H2O?",
+          "options": [ "Salt", "Water", "Oxygen", "Hydrogen" ],
+          "correctAnswer": "Water",
+          "points": 10,
+          "explanation": "Water is a chemical compound consisting of two hydrogen atoms bonded to a single oxygen atom."
+        },
+        {
+          "id": "quiz_1_q9",
+          "question": "What is the national animal of India?",
+          "options": [ "Tiger", "Lion", "Elephant", "Peacock" ],
+          "correctAnswer": "Tiger",
+          "points": 10,
+          "explanation": "The Royal Bengal Tiger is the national animal of India."
+        },
+        {
+          "id": "quiz_1_q10",
+          "question": "Which direction does the sun rise from?",
+          "options": [ "North", "South", "East", "West" ],
+          "correctAnswer": "East",
+          "points": 10,
+          "explanation": "The Earth rotates from west to east, making the sun appear to rise in the east."
+        }
+      ]
+    },
+    {
+      "id": "quiz_2",
+      "title": "React.js Basics",
+      "description": "Test your fundamentals of React, hooks, states, virtual DOM, and component state management.",
+      "thumbnail": "/images/quiz_2.jpg",
+      "category": "Programming",
+      "difficulty": "Medium",
+      "timePerQuestion": 20,
+      "totalQuestions": 10,
+      "questions": [
+        {
+          "id": "quiz_2_q1",
+          "question": "Which company actively maintains React.js?",
+          "options": [ "Google", "Meta", "Microsoft", "Amazon" ],
+          "correctAnswer": "Meta",
+          "points": 10,
+          "explanation": "React was originally created by Jordan Walke, a software engineer at Meta (formerly Facebook), and is still maintained by them."
+        },
+        {
+          "id": "quiz_2_q2",
+          "question": "Which hook is used to manage local state in a functional component?",
+          "options": [ "useRef", "useState", "useMemo", "useEffect" ],
+          "correctAnswer": "useState",
+          "points": 10,
+          "explanation": "useState is the built-in Hook that allows you to add state variables to functional components."
+        },
+        {
+          "id": "quiz_2_q3",
+          "question": "What does JSX stand for?",
+          "options": [ "Java XML", "JavaScript XML", "JSON XML", "Java Syntax XML" ],
+          "correctAnswer": "JavaScript XML",
+          "points": 10,
+          "explanation": "JSX stands for JavaScript XML, which allows us to write HTML elements in JavaScript files."
+        },
+        {
+          "id": "quiz_2_q4",
+          "question": "What is the default file extension used for React components containing JSX?",
+          "options": [ ".jsx", ".java", ".ts", ".vue" ],
+          "correctAnswer": ".jsx",
+          "points": 10,
+          "explanation": "While regular .js works in some setups, .jsx is the conventional React file extension."
+        },
+        {
+          "id": "quiz_2_q5",
+          "question": "Which of the following is the standard library used for routing in React?",
+          "options": [ "React Router", "Express", "Redux", "Axios" ],
+          "correctAnswer": "React Router",
+          "points": 10,
+          "explanation": "React Router is a fully-featured client-side routing library for React."
+        },
+        {
+          "id": "quiz_2_q6",
+          "question": "What is the primary purpose of the Virtual DOM in React?",
+          "options": [ "Styling", "Performance", "Database", "Hosting" ],
+          "correctAnswer": "Performance",
+          "points": 10,
+          "explanation": "The Virtual DOM optimizes rendering performance by only updating actual DOM elements that have changed."
+        },
+        {
+          "id": "quiz_2_q7",
+          "question": "In React, component state should be treated as:",
+          "options": [ "Mutated", "Immutable", "Deleted", "Global" ],
+          "correctAnswer": "Immutable",
+          "points": 10,
+          "explanation": "React state should be treated as immutable; you should never mutate state directly, but rather use the state setter function."
+        },
+        {
+          "id": "quiz_2_q8",
+          "question": "Which Hook is used to handle side effects in React functional components?",
+          "options": [ "useEffect", "useRef", "useState", "useId" ],
+          "correctAnswer": "useEffect",
+          "points": 10,
+          "explanation": "useEffect lets you synchronize a component with an external system (fetching data, setting timers, direct DOM updates)."
+        },
+        {
+          "id": "quiz_2_q9",
+          "question": "Props passed down to a child component are:",
+          "options": [ "Mutable", "Read-only", "Database", "CSS" ],
+          "correctAnswer": "Read-only",
+          "points": 10,
+          "explanation": "Props are read-only to ensure a predictable one-way data flow from parent to child."
+        },
+        {
+          "id": "quiz_2_q10",
+          "question": "Which modern build tool is standard for scaffolding React apps with rapid hot module replacement (HMR)?",
+          "options": [ "Vite", "MySQL", "Firebase", "Docker" ],
+          "correctAnswer": "Vite",
+          "points": 10,
+          "explanation": "Vite is a fast build tool and dev server that has largely replaced Webpack for modern React project templates."
+        }
+      ]
+    },
+    {
+      "id": "quiz_3",
+      "title": "Movies & Entertainment",
+      "description": "Test your knowledge on popular blockbusters, superhero universes, books, and iconic pop culture facts.",
+      "thumbnail": "/images/quiz_3.jpg",
+      "category": "Entertainment",
+      "difficulty": "Easy",
+      "timePerQuestion": 15,
+      "totalQuestions": 10,
+      "questions": [
+        {
+          "id": "quiz_3_q1",
+          "question": "Which superhero universe does Iron Man belong to?",
+          "options": [ "DC", "Marvel", "Pixar", "Sony" ],
+          "correctAnswer": "Marvel",
+          "points": 10,
+          "explanation": "Iron Man is a Marvel Comics character, played by Robert Downey Jr. in the Marvel Cinematic Universe."
+        },
+        {
+          "id": "quiz_3_q2",
+          "question": "Who directed the blockbuster movie 'Avatar'?",
+          "options": [ "James Cameron", "Nolan", "Spielberg", "Scott" ],
+          "correctAnswer": "James Cameron",
+          "points": 10,
+          "explanation": "James Cameron directed Avatar, Titanic, and Aliens."
+        },
+        {
+          "id": "quiz_3_q3",
+          "question": "Who wrote the famous Harry Potter fantasy book series?",
+          "options": [ "Rowling", "Tolkien", "Lewis", "Martin" ],
+          "correctAnswer": "Rowling",
+          "points": 10,
+          "explanation": "J.K. Rowling is the British author who created the wizarding world of Harry Potter."
+        },
+        {
+          "id": "quiz_3_q4",
+          "question": "Who is the creator of the legendary detective Sherlock Holmes?",
+          "options": [ "Conan Doyle", "Agatha", "Dickens", "Twain" ],
+          "correctAnswer": "Conan Doyle",
+          "points": 10,
+          "explanation": "Sir Arthur Conan Doyle created Sherlock Holmes and Dr. John Watson in 1887."
+        },
+        {
+          "id": "quiz_3_q5",
+          "question": "The prestigious Academy Awards are popularly known as what?",
+          "options": [ "Sports", "Movies", "Music", "Science" ],
+          "correctAnswer": "Movies",
+          "points": 10,
+          "explanation": "The Academy Awards, or Oscars, honor excellence in the film industry."
+        },
+        {
+          "id": "quiz_3_q6",
+          "question": "Which Disney movie features the character Queen Elsa of Arendelle?",
+          "options": [ "Moana", "Frozen", "Coco", "Brave" ],
+          "correctAnswer": "Frozen",
+          "points": 10,
+          "explanation": "Elsa is the main character in Disney's Frozen franchise."
+        },
+        {
+          "id": "quiz_3_q7",
+          "question": "Which fictional city does Batman protect?",
+          "options": [ "Metropolis", "Gotham", "Central", "Star" ],
+          "correctAnswer": "Gotham",
+          "points": 10,
+          "explanation": "Gotham City is the dark, fictional metropolis that Batman calls home."
+        },
+        {
+          "id": "quiz_3_q8",
+          "question": "What subject does Hogwarts School of Witchcraft and Wizardry teach?",
+          "options": [ "Cooking", "Magic", "Science", "History" ],
+          "correctAnswer": "Magic",
+          "points": 10,
+          "explanation": "Hogwarts is a school of magic for wizards and witches."
+        },
+        {
+          "id": "quiz_3_q9",
+          "question": "In which film did the yellow Minions make their first appearance?",
+          "options": [ "Cars", "Despicable Me", "Up", "Shrek" ],
+          "correctAnswer": "Despicable Me",
+          "points": 10,
+          "explanation": "Minions debuted in the 2010 animated film Despicable Me."
+        },
+        {
+          "id": "quiz_3_q10",
+          "question": "The Joker is the arch-nemesis of which superhero?",
+          "options": [ "Spider-Man", "Batman", "Iron Man", "Thor" ],
+          "correctAnswer": "Batman",
+          "points": 10,
+          "explanation": "The Joker is Batman's most notorious criminal opponent in DC Comics."
+        }
+      ]
+    },
+    {
+      "id": "quiz_4",
+      "title": "Science",
+      "description": "Explore the wonders of biology, chemistry, physics, astronomy, and units of measurement.",
+      "thumbnail": "/images/quiz_4.jpg",
+      "category": "Science",
+      "difficulty": "Hard",
+      "timePerQuestion": 25,
+      "totalQuestions": 10,
+      "questions": [
+        {
+          "id": "quiz_4_q1",
+          "question": "What is the chemical symbol for Gold?",
+          "options": [ "Go", "Au", "Ag", "Gd" ],
+          "correctAnswer": "Au",
+          "points": 10,
+          "explanation": "The chemical symbol for gold is Au, derived from the Latin word 'aurum', meaning shining dawn."
+        },
+        {
+          "id": "quiz_4_q2",
+          "question": "Which is the nearest star to Earth?",
+          "options": [ "Sirius", "Sun", "Polaris", "Alpha" ],
+          "correctAnswer": "Sun",
+          "points": 10,
+          "explanation": "The Sun is the closest star to Earth, situated at the center of our solar system."
+        },
+        {
+          "id": "quiz_4_q3",
+          "question": "How many chambers does the human heart have?",
+          "options": [ "2", "3", "4", "5" ],
+          "correctAnswer": "4",
+          "points": 10,
+          "explanation": "The human heart has four chambers: two upper atria and two lower ventricles."
+        },
+        {
+          "id": "quiz_4_q4",
+          "question": "Which gas do plants primarily absorb during photosynthesis?",
+          "options": [ "Oxygen", "Nitrogen", "CO2", "Hydrogen" ],
+          "correctAnswer": "CO2",
+          "points": 10,
+          "explanation": "Plants take in carbon dioxide (CO2) and release oxygen during photosynthesis."
+        },
+        {
+          "id": "quiz_4_q5",
+          "question": "What is the SI unit of speed?",
+          "options": [ "km/h", "m/s", "mph", "fps" ],
+          "correctAnswer": "m/s",
+          "points": 10,
+          "explanation": "The SI unit of speed is meters per second (m/s)."
+        },
+        {
+          "id": "quiz_4_q6",
+          "question": "What does the first part of the word DNA stand for?",
+          "options": [ "Dynamic", "Deoxyribo", "Digital", "Dual" ],
+          "correctAnswer": "Deoxyribo",
+          "points": 10,
+          "explanation": "DNA stands for Deoxyribonucleic Acid."
+        },
+        {
+          "id": "quiz_4_q7",
+          "question": "What is the boiling point of pure water at sea level?",
+          "options": [ "50°C", "100°C", "120°C", "90°C" ],
+          "correctAnswer": "100°C",
+          "points": 10,
+          "explanation": "Water boils at 100°C (212°F) under standard atmospheric pressure."
+        },
+        {
+          "id": "quiz_4_q8",
+          "question": "Which planet in our solar system is known as the Red Planet?",
+          "options": [ "Mars", "Venus", "Mercury", "Saturn" ],
+          "correctAnswer": "Mars",
+          "points": 10,
+          "explanation": "Mars is known as the Red Planet due to iron oxide (rust) on its surface."
+        },
+        {
+          "id": "quiz_4_q9",
+          "question": "What is the largest organ of the human body?",
+          "options": [ "Heart", "Skin", "Liver", "Brain" ],
+          "correctAnswer": "Skin",
+          "points": 10,
+          "explanation": "The skin is the body's largest organ, covering and protecting internal tissues."
+        },
+        {
+          "id": "quiz_4_q10",
+          "question": "What is the standard unit of electric current?",
+          "options": [ "Volt", "Watt", "Ampere", "Ohm" ],
+          "correctAnswer": "Ampere",
+          "points": 10,
+          "explanation": "The Ampere (A) is the SI unit of electrical current."
+        }
+      ]
+    },
+    {
+      "id": "quiz_5",
+      "title": "Sports",
+      "description": "Test your knowledge on soccer rules, historical events, badminton, cricket, and NBA facts.",
+      "thumbnail": "/images/quiz_5.jpg",
+      "category": "Sports",
+      "difficulty": "Medium",
+      "timePerQuestion": 15,
+      "totalQuestions": 10,
+      "questions": [
+        {
+          "id": "quiz_5_q1",
+          "question": "How many players are on the field for one football (soccer) team?",
+          "options": [ "9", "10", "11", "12" ],
+          "correctAnswer": "11",
+          "points": 10,
+          "explanation": "A match is played by two teams, each with a maximum of 11 players including the goalkeeper."
+        },
+        {
+          "id": "quiz_5_q2",
+          "question": "Every how many years are the Olympic Games celebrated?",
+          "options": [ "2", "3", "4", "5" ],
+          "correctAnswer": "4",
+          "points": 10,
+          "explanation": "The Summer and Winter Olympics are held every four years."
+        },
+        {
+          "id": "quiz_5_q3",
+          "question": "High-quality cricket bats are traditionally made from which wood?",
+          "options": [ "Oak", "Willow", "Pine", "Teak" ],
+          "correctAnswer": "Willow",
+          "points": 10,
+          "explanation": "Cricket bats are made from English Willow (Salix alba caerulea) due to its strength and compression resistance."
+        },
+        {
+          "id": "quiz_5_q4",
+          "question": "Which sport is played in the NBA?",
+          "options": [ "Football", "Basketball", "Baseball", "Hockey" ],
+          "correctAnswer": "Basketball",
+          "points": 10,
+          "explanation": "The NBA stands for National Basketball Association."
+        },
+        {
+          "id": "quiz_5_q5",
+          "question": "Which tennis Grand Slam tournament is played on grass courts in the United Kingdom?",
+          "options": [ "US Open", "French Open", "Wimbledon", "Australian Open" ],
+          "correctAnswer": "Wimbledon",
+          "points": 10,
+          "explanation": "Wimbledon is the oldest tennis tournament in the world and the only Grand Slam played on grass."
+        },
+        {
+          "id": "quiz_5_q6",
+          "question": "How many chess pieces does each side start with in a standard chess game?",
+          "options": [ "14", "15", "16", "17" ],
+          "correctAnswer": "16",
+          "points": 10,
+          "explanation": "Each player starts with 16 pieces: 1 King, 1 Queen, 2 Rooks, 2 Knights, 2 Bishops, and 8 Pawns."
+        },
+        {
+          "id": "quiz_5_q7",
+          "question": "In badminton, what is the conical object that is hit back and forth commonly called?",
+          "options": [ "Birdie", "Ball", "Puck", "Disc" ],
+          "correctAnswer": "Birdie",
+          "points": 10,
+          "explanation": "The badminton projectile is officially called a shuttlecock, but is commonly referred to as a birdie."
+        },
+        {
+          "id": "quiz_5_q8",
+          "question": "How many active players per team are on court during a Kabaddi match?",
+          "options": [ "5", "6", "7", "8" ],
+          "correctAnswer": "7",
+          "points": 10,
+          "explanation": "A Kabaddi match starts with seven players on court for each team."
+        },
+        {
+          "id": "quiz_5_q9",
+          "question": "The FIFA World Cup is associated with which sport?",
+          "options": [ "Cricket", "Football", "Rugby", "Tennis" ],
+          "correctAnswer": "Football",
+          "points": 10,
+          "explanation": "FIFA stands for Federation Internationale de Football Association, organizing soccer's main event."
+        },
+        {
+          "id": "quiz_5_q10",
+          "question": "Which cricket format typically allows the highest number of overall runs in a single match?",
+          "options": [ "Test", "ODI", "T20", "All" ],
+          "correctAnswer": "Test",
+          "points": 10,
+          "explanation": "Test cricket is played over five days with up to four innings, leading to high cumulative scores compared to short formats."
+        }
+      ]
+    },
+    {
+      "id": "quiz_6",
+      "title": "JavaScript Advanced",
+      "description": "Test your mastery of closures, prototypes, event loop, hoisting, scopes, and advanced asynchronous JS execution patterns.",
+      "thumbnail": "/images/quiz_6.jpg",
+      "category": "Programming",
+      "difficulty": "Hard",
+      "timePerQuestion": 25,
+      "totalQuestions": 10,
+      "questions": [
+        {
+          "id": "quiz_6_q1",
+          "question": "Which of the following is NOT a native JavaScript data type?",
+          "options": [ "Undefined", "Null", "Float", "Boolean" ],
+          "correctAnswer": "Float",
+          "points": 10,
+          "explanation": "JavaScript only has a single 'Number' type (and 'BigInt') for numbers, unlike languages that distinguish floats and integers."
+        },
+        {
+          "id": "quiz_6_q2",
+          "question": "What is the output of 'typeof null' in JavaScript?",
+          "options": [ "null", "undefined", "object", "string" ],
+          "correctAnswer": "object",
+          "points": 10,
+          "explanation": "This is a historic bug in JavaScript, where null is mistakenly evaluated as having type 'object'."
+        },
+        {
+          "id": "quiz_6_q3",
+          "question": "Which global JSON method is used to serialize an object into a JSON format string?",
+          "options": [ "JSON.parse()", "JSON.stringify()", "JSON.toCSV()", "JSON.serialize()" ],
+          "correctAnswer": "JSON.stringify()",
+          "points": 10,
+          "explanation": "JSON.stringify() converts a JavaScript value or object to a JSON string."
+        },
+        {
+          "id": "quiz_6_q4",
+          "question": "What is the primary purpose of the 'use strict' directive in JavaScript?",
+          "options": [ "To enable strict type checking", "To enforce stricter parsing and error handling", "To load external modules", "To format style tags" ],
+          "correctAnswer": "To enforce stricter parsing and error handling",
+          "points": 10,
+          "explanation": "Strict mode catches common coding bloopers, throwing exceptions for unsafe actions like using undeclared variables."
+        },
+        {
+          "id": "quiz_6_q5",
+          "question": "Which of the following keywords declares a block-scoped variable that can be re-assigned?",
+          "options": [ "var", "let", "const", "global" ],
+          "correctAnswer": "let",
+          "points": 10,
+          "explanation": "'let' is block-scoped and allows values to be updated, whereas 'const' prevents re-assignment and 'var' is function-scoped."
+        },
+        {
+          "id": "quiz_6_q6",
+          "question": "What is a closures in JavaScript?",
+          "options": [ "A method to close browser tabs", "A function bundled together with references to its surrounding lexical environment", "A tool to compress JS assets", "An HTML close tag parser" ],
+          "correctAnswer": "A function bundled together with references to its surrounding lexical environment",
+          "points": 10,
+          "explanation": "Closures allow nested inner functions to retain access to variables declared in parent scopes even after the outer function executes."
+        },
+        {
+          "id": "quiz_6_q7",
+          "question": "Which company originally created and launched JavaScript in 1995?",
+          "options": [ "Microsoft", "Netscape", "Sun Microsystems", "Oracle" ],
+          "correctAnswer": "Netscape",
+          "points": 10,
+          "explanation": "JavaScript was created by Brendan Eich at Netscape Communications under the initial name LiveScript."
+        },
+        {
+          "id": "quiz_6_q8",
+          "question": "Which operator evaluates strict equality, checking both value and data type?",
+          "options": [ "==", "===", "=", "!=" ],
+          "correctAnswer": "===",
+          "points": 10,
+          "explanation": "The strict equality operator (===) compares both the value and type of two values without implicit type coercion."
+        },
+        {
+          "id": "quiz_6_q9",
+          "question": "What is the resolution behavior of Promise.all()?",
+          "options": [ "Rejects if any promise rejects, resolves only when all resolve", "Resolves as soon as any input promise resolves", "Resolves only if all input promises reject", "Delays resolution indefinitely" ],
+          "correctAnswer": "Rejects if any promise rejects, resolves only when all resolve",
+          "points": 10,
+          "explanation": "Promise.all resolves only when all promises resolve. If any promise rejects, it immediately rejects with that error."
+        },
+        {
+          "id": "quiz_6_q10",
+          "question": "Which array method is used to accumulate and fold elements into a single aggregate value?",
+          "options": [ "map()", "filter()", "reduce()", "forEach()" ],
+          "correctAnswer": "reduce()",
+          "points": 10,
+          "explanation": "The reduce() method executes a reducer function on each element, accumulating them into a single output value."
+        }
+      ]
+    },
+    {
+      "id": "quiz_7",
+      "title": "World Geography",
+      "description": "Test your knowledge of capitals, landmarks, oceans, deserts, and general geographic trivia.",
+      "thumbnail": "/images/quiz_7.jpg",
+      "category": "General Knowledge",
+      "difficulty": "Medium",
+      "timePerQuestion": 20,
+      "totalQuestions": 10,
+      "questions": [
+        {
+          "id": "quiz_7_q1",
+          "question": "Which is the longest river in the world?",
+          "options": [ "Amazon River", "Nile River", "Yangtze River", "Mississippi River" ],
+          "correctAnswer": "Nile River",
+          "points": 10,
+          "explanation": "The Nile River is traditionally considered the longest river in the world, stretching over 6,650 kilometers."
+        },
+        {
+          "id": "quiz_7_q2",
+          "question": "Which is the smallest independent sovereign country in the world?",
+          "options": [ "Monaco", "Vatican City", "Liechtenstein", "San Marino" ],
+          "correctAnswer": "Vatican City",
+          "points": 10,
+          "explanation": "Vatican City is the smallest country in the world by both area (0.49 sq km) and population."
+        },
+        {
+          "id": "quiz_7_q3",
+          "question": "What is the capital city of Australia?",
+          "options": [ "Sydney", "Melbourne", "Canberra", "Brisbane" ],
+          "correctAnswer": "Canberra",
+          "points": 10,
+          "explanation": "Canberra was selected as the capital in 1908 as a compromise between rivals Sydney and Melbourne."
+        },
+        {
+          "id": "quiz_7_q4",
+          "question": "Which desert is the largest hot desert on Earth?",
+          "options": [ "Sahara Desert", "Gobi Desert", "Kalahari Desert", "Arabian Desert" ],
+          "correctAnswer": "Sahara Desert",
+          "points": 10,
+          "explanation": "The Sahara Desert is the largest hot desert, though the cold deserts of Antarctica and the Arctic are larger overall."
+        },
+        {
+          "id": "quiz_7_q5",
+          "question": "Which country is home to the highest number of natural lakes?",
+          "options": [ "Canada", "USA", "Russia", "Brazil" ],
+          "correctAnswer": "Canada",
+          "points": 10,
+          "explanation": "Canada has over 60% of the world's lakes, with lakes covering about 9% of the country's total area."
+        },
+        {
+          "id": "quiz_7_q6",
+          "question": "What is the national capital of Canada?",
+          "options": [ "Toronto", "Vancouver", "Ottawa", "Montreal" ],
+          "correctAnswer": "Ottawa",
+          "points": 10,
+          "explanation": "Ottawa was chosen as the capital of Canada by Queen Victoria in 1857 due to its strategic location."
+        },
+        {
+          "id": "quiz_7_q7",
+          "question": "Which mountain range is traditionally considered the border between Europe and Asia?",
+          "options": [ "Alps", "Himalayas", "Ural Mountains", "Andes" ],
+          "correctAnswer": "Ural Mountains",
+          "points": 10,
+          "explanation": "The Ural Mountains run north-south through western Russia and form the boundary between the two continents."
+        },
+        {
+          "id": "quiz_7_q8",
+          "question": "Which is the largest island in the world that is not a continent?",
+          "options": [ "Australia", "Greenland", "New Guinea", "Madagascar" ],
+          "correctAnswer": "Greenland",
+          "points": 10,
+          "explanation": "Greenland is the largest island in the world. Australia is classified as a continent rather than an island."
+        },
+        {
+          "id": "quiz_7_q9",
+          "question": "Which nation is poetically referred to as the 'Land of the Rising Sun'?",
+          "options": [ "China", "Japan", "South Korea", "Thailand" ],
+          "correctAnswer": "Japan",
+          "points": 10,
+          "explanation": "The name Japan translates literally to 'sun origin', giving rise to its famous nickname."
+        },
+        {
+          "id": "quiz_7_q10",
+          "question": "Which is the highest uninterrupted waterfall in the world?",
+          "options": [ "Niagara Falls", "Angel Falls", "Victoria Falls", "Iguazu Falls" ],
+          "correctAnswer": "Angel Falls",
+          "points": 10,
+          "explanation": "Angel Falls in Venezuela has a height of 979 meters (3,212 feet) with an uninterrupted drop of 807 meters."
+        }
+      ]
+    }
+  ]
+}
