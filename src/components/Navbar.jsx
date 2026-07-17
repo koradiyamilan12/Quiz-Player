@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
-import { Sun, Moon, Brain, Trophy } from "lucide-react";
+import { Sun, Moon, Brain } from "lucide-react";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();

@@ -1,9 +1,26 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import QuizList from "./pages/QuizList";
-import QuizPlayer from "./pages/QuizPlayer";
 import { AnimatePresence, motion } from "framer-motion";
+
+// Lazy-load page components for code splitting & bundle size optimization
+const QuizList = lazy(() => import("./pages/QuizList"));
+const QuizPlayer = lazy(() => import("./pages/QuizPlayer"));
+
+// Premium Spinner Page Loader Fallback
+const PageLoader = () => {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+      <div className="relative">
+        <div className="absolute inset-0 bg-indigo-500/20 rounded-full filter blur-xl transform scale-150 animate-pulse"></div>
+        <div className="w-12 h-12 border-4 border-indigo-500/30 border-t-indigo-600 rounded-full animate-spin relative z-10"></div>
+      </div>
+      <span className="text-sm font-semibold text-slate-500 dark:text-slate-400 mt-4 animate-pulse">
+        Loading QuizVerse...
+      </span>
+    </div>
+  );
+};
 
 // Page transition wrapper component
 const PageTransition = ({ children }) => {
@@ -31,7 +48,9 @@ const AnimatedRoutes = () => {
           path="/"
           element={
             <PageTransition>
-              <QuizList />
+              <Suspense fallback={<PageLoader />}>
+                <QuizList />
+              </Suspense>
             </PageTransition>
           }
         />
@@ -39,7 +58,9 @@ const AnimatedRoutes = () => {
           path="/quiz/:id"
           element={
             <PageTransition>
-              <QuizPlayer />
+              <Suspense fallback={<PageLoader />}>
+                <QuizPlayer />
+              </Suspense>
             </PageTransition>
           }
         />

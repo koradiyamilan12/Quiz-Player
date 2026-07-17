@@ -25,9 +25,17 @@ const formatRelativeTime = (isoString) => {
       day: "numeric",
       year: "2-digit"
     });
-  } catch (e) {
+  } catch {
     return "";
   }
+};
+
+// Rank badge rendering component
+const RankBadge = ({ rank }) => {
+  if (rank === 1) return <Medal className="w-5 h-5 text-amber-500 fill-amber-500/20" />;
+  if (rank === 2) return <Medal className="w-5 h-5 text-slate-400 fill-slate-400/20" />;
+  if (rank === 3) return <Medal className="w-5 h-5 text-amber-700 fill-amber-700/20" />;
+  return <span className="font-bold text-xs text-slate-400 dark:text-slate-500 pl-1">{rank}</span>;
 };
 
 const Leaderboard = ({ quizId, refreshTrigger }) => {
@@ -105,14 +113,6 @@ const Leaderboard = ({ quizId, refreshTrigger }) => {
         <tbody className="divide-y divide-slate-200/10">
           {scores.map((record, index) => {
             const rank = index + 1;
-            
-            // Highlight styling for Top 3
-            const getRankBadge = () => {
-              if (rank === 1) return <Medal className="w-5 h-5 text-amber-500 fill-amber-500/20" />;
-              if (rank === 2) return <Medal className="w-5 h-5 text-slate-400 fill-slate-400/20" />;
-              if (rank === 3) return <Medal className="w-5 h-5 text-amber-700 fill-amber-700/20" />;
-              return <span className="font-bold text-xs text-slate-400 dark:text-slate-500 pl-1">{rank}</span>;
-            };
 
             return (
               <tr 
@@ -124,7 +124,7 @@ const Leaderboard = ({ quizId, refreshTrigger }) => {
                 {/* Rank */}
                 <td className="py-3.5 pl-3">
                   <div className="flex items-center">
-                    {getRankBadge()}
+                    <RankBadge rank={rank} />
                   </div>
                 </td>
 

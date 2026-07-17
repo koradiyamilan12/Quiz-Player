@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import quizzesData from "../data/quiz.json";
 import { Search, Filter, Clock, BookOpen, Brain, Globe, Laptop, Film, Beaker, Trophy, ArrowRight } from "lucide-react";
@@ -29,17 +29,19 @@ const QuizList = () => {
   const quizzes = quizzesData.quizzes;
 
   // Extract unique categories for filters
-  const categories = ["All", ...new Set(quizzes.map(q => q.category))];
+  const categories = useMemo(() => ["All", ...new Set(quizzes.map(q => q.category))], [quizzes]);
   const difficulties = ["All", "Easy", "Medium", "Hard"];
 
   // Filter quizzes
-  const filteredQuizzes = quizzes.filter(quiz => {
-    const matchesSearch = quiz.title.toLowerCase().includes(search.toLowerCase()) || 
-                          quiz.description.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = selectedCategory === "All" || quiz.category === selectedCategory;
-    const matchesDifficulty = selectedDifficulty === "All" || quiz.difficulty === selectedDifficulty;
-    return matchesSearch && matchesCategory && matchesDifficulty;
-  });
+  const filteredQuizzes = useMemo(() => {
+    return quizzes.filter(quiz => {
+      const matchesSearch = quiz.title.toLowerCase().includes(search.toLowerCase()) || 
+                            quiz.description.toLowerCase().includes(search.toLowerCase());
+      const matchesCategory = selectedCategory === "All" || quiz.category === selectedCategory;
+      const matchesDifficulty = selectedDifficulty === "All" || quiz.difficulty === selectedDifficulty;
+      return matchesSearch && matchesCategory && matchesDifficulty;
+    });
+  }, [quizzes, search, selectedCategory, selectedDifficulty]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">

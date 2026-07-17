@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import quizzesData from "../data/quiz.json";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, CheckCircle2, XCircle, AlertCircle, ArrowRight, Play, Volume2, VolumeX, Shuffle, Keyboard, Award } from "lucide-react";
+import { AlertCircle, ArrowRight, Play, Volume2, VolumeX, Shuffle, Keyboard } from "lucide-react";
 import ResultScreen from "../components/ResultScreen";
 
 // Web Audio API Synthesizer sound generator
@@ -61,7 +61,7 @@ const shuffleArray = (array) => {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[arr[j]]] = [arr[arr[j]], arr[i]];
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
 };
@@ -72,18 +72,6 @@ const QuizPlayer = () => {
   
   // Find current quiz
   const baseQuiz = quizzesData.quizzes.find(q => q.id === id);
-
-  if (!baseQuiz) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-        <AlertCircle className="w-16 h-16 text-rose-500 mb-4" />
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Quiz not found</h2>
-        <button onClick={() => navigate("/")} className="mt-4 px-6 py-2 bg-indigo-600 text-white rounded-xl">
-          Back to Dashboard
-        </button>
-      </div>
-    );
-  }
 
   // Quiz Settings State
   const [isPlaying, setIsPlaying] = useState(false);
@@ -97,13 +85,14 @@ const QuizPlayer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [answersLog, setAnswersLog] = useState([]); // Array of strings (options chosen) or null
-  const [timeLeft, setTimeLeft] = useState(baseQuiz.timePerQuestion);
+  const [timeLeft, setTimeLeft] = useState(baseQuiz ? baseQuiz.timePerQuestion : 0);
   const [quizFinished, setQuizFinished] = useState(false);
   
   const timerRef = useRef(null);
 
   // Start game handler
-  const startQuiz = () => {
+  const startQuiz = useCallback(() => {
+    if (!baseQuiz) return;
     let preparedQuestions = baseQuiz.questions.map(q => {
       // Copy question and option order
       const options = shuffleOptions ? shuffleArray(q.options) : [...q.options];
@@ -122,7 +111,50 @@ const QuizPlayer = () => {
     setQuizFinished(false);
     setIsPlaying(true);
     playSynthSound("tick", soundEnabled);
-  };
+  }, [baseQuiz, shuffleOptions, shuffleQuestions, soundEnabled]);
+
+  // Process selected choice and advance index
+  const processAnswerAndAdvance = useCallback((selection) => {
+    if (!baseQuiz) return;
+    const currentQuestion = questions[currentIndex];
+    if (!currentQuestion) return;
+    const isCorrect = selection === currentQuestion.correctAnswer;
+    
+    // Play sounds
+    if (selection === null) {
+      playSynthSound("incorrect", soundEnabled);
+    } else {
+      playSynthSound(isCorrect ? "correct" : "incorrect", soundEnabled);
+    }
+
+    setAnswersLog((prev) => [...prev, selection]);
+
+    // Reset option selection
+    setSelectedOption("");
+
+    if (currentIndex + 1 < questions.length) {
+      setCurrentIndex(prev => prev + 1);
+      setTimeLeft(baseQuiz.timePerQuestion);
+    } else {
+      // Quiz finished
+      setQuizFinished(true);
+      playSynthSound("complete", soundEnabled);
+    }
+  }, [questions, currentIndex, baseQuiz, soundEnabled]);
+
+  // Handle timeout (timer hits 0)
+  const handleTimeOut = useCallback(() => {
+    // If user has an option selected, use it, otherwise mark null (unanswered)
+    const finalSelection = selectedOption || null;
+    processAnswerAndAdvance(finalSelection);
+  }, [selectedOption, processAnswerAndAdvance]);
+
+  // Next Button handler
+  const handleNextClick = useCallback(() => {
+    if (!selectedOption) return;
+    clearInterval(timerRef.current);
+    processAnswerAndAdvance(selectedOption);
+  }, [selectedOption, processAnswerAndAdvance]);
 
   // Timer interval controller
   useEffect(() => {
@@ -144,49 +176,7 @@ const QuizPlayer = () => {
     }, 1000);
 
     return () => clearInterval(timerRef.current);
-  }, [isPlaying, currentIndex, quizFinished]);
-
-  // Handle timeout (timer hits 0)
-  const handleTimeOut = () => {
-    // If user has an option selected, use it, otherwise mark null (unanswered)
-    const finalSelection = selectedOption || null;
-    processAnswerAndAdvance(finalSelection);
-  };
-
-  // Process selected choice and advance index
-  const processAnswerAndAdvance = (selection) => {
-    const currentQuestion = questions[currentIndex];
-    const isCorrect = selection === currentQuestion.correctAnswer;
-    
-    // Play sounds
-    if (selection === null) {
-      playSynthSound("incorrect", soundEnabled);
-    } else {
-      playSynthSound(isCorrect ? "correct" : "incorrect", soundEnabled);
-    }
-
-    const updatedLogs = [...answersLog, selection];
-    setAnswersLog(updatedLogs);
-
-    // Reset option selection and reset timer
-    setSelectedOption("");
-
-    if (currentIndex + 1 < questions.length) {
-      setCurrentIndex(prev => prev + 1);
-      setTimeLeft(baseQuiz.timePerQuestion);
-    } else {
-      // Quiz finished
-      setQuizFinished(true);
-      playSynthSound("complete", soundEnabled);
-    }
-  };
-
-  // Next Button handler
-  const handleNextClick = () => {
-    if (!selectedOption) return;
-    clearInterval(timerRef.current);
-    processAnswerAndAdvance(selectedOption);
-  };
+  }, [isPlaying, quizFinished, handleTimeOut, soundEnabled]);
 
   // Keyboard navigation logic
   useEffect(() => {
@@ -210,20 +200,21 @@ const QuizPlayer = () => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isPlaying, currentIndex, quizFinished, keyboardEnabled, selectedOption, questions]);
+  }, [isPlaying, currentIndex, quizFinished, keyboardEnabled, selectedOption, questions, handleNextClick]);
 
   // Reset/Restart Quiz
-  const handlePlayAgain = () => {
+  const handlePlayAgain = useCallback(() => {
     startQuiz();
-  };
+  }, [startQuiz]);
 
   // Compute final scores
-  const getStats = () => {
+  const stats = useMemo(() => {
     let correct = 0;
     let wrong = 0;
     let score = 0;
 
     questions.forEach((q, idx) => {
+      if (!q) return;
       const chosen = answersLog[idx];
       if (chosen === q.correctAnswer) {
         correct++;
@@ -242,7 +233,21 @@ const QuizPlayer = () => {
       wrong,
       percentage
     };
-  };
+  }, [questions, answersLog]);
+
+  // If the quiz is not found, render a fallback.
+  // This is after Hook declarations to satisfy the React rules of Hooks!
+  if (!baseQuiz) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+        <AlertCircle className="w-16 h-16 text-rose-500 mb-4" />
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Quiz not found</h2>
+        <button onClick={() => navigate("/")} className="mt-4 px-6 py-2 bg-indigo-600 text-white rounded-xl">
+          Back to Dashboard
+        </button>
+      </div>
+    );
+  }
 
   // Render Quiz Settings (Lobby Screen)
   if (!isPlaying) {
@@ -373,7 +378,6 @@ const QuizPlayer = () => {
 
   // Render Result Screen
   if (quizFinished) {
-    const stats = getStats();
     return (
       <ResultScreen
         quizId={baseQuiz.id}

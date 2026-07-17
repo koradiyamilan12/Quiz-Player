@@ -1,10 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import confetti from "canvas-confetti";
 import { saveLeaderboardScore } from "../firebase";
 import Leaderboard from "./Leaderboard";
 import { Trophy, CheckCircle, XCircle, Percent, RotateCcw, Home, UserCheck, Loader2, ChevronDown, ChevronUp, Info, Check, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+// Get custom messages based on performance
+const getPerformanceDetails = (percentage) => {
+  if (percentage >= 90) {
+    return {
+      title: "Spectacular Achievement!",
+      message: "Unbelievable accuracy! You have completely mastered this topic.",
+      color: "text-emerald-500",
+      bg: "bg-emerald-500/10 border-emerald-500/20"
+    };
+  } else if (percentage >= 75) {
+    return {
+      title: "Brilliant Job!",
+      message: "Incredible score! Your hard work is clearly paying off.",
+      color: "text-indigo-500",
+      bg: "bg-indigo-500/10 border-indigo-500/20"
+    };
+  } else if (percentage >= 50) {
+    return {
+      title: "Nice Performance!",
+      message: "You did well! Try reading up on the incorrect explanations to get 100%.",
+      color: "text-amber-500",
+      bg: "bg-amber-500/10 border-amber-500/20"
+    };
+  } else {
+    return {
+      title: "Keep Learning!",
+      message: "Every mistake is a stepping stone. Review the answers and try again!",
+      color: "text-rose-500",
+      bg: "bg-rose-500/10 border-rose-500/20"
+    };
+  }
+};
 
 const ResultScreen = ({ quizId, quizTitle, score, correct, wrong, percentage, questions = [], answersLog = [], onPlayAgain }) => {
   const [showReview, setShowReview] = useState(false);
@@ -42,7 +75,7 @@ const ResultScreen = ({ quizId, quizTitle, score, correct, wrong, percentage, qu
     }
   }, [percentage]);
 
-  const handleNameSubmit = async (e) => {
+  const handleNameSubmit = useCallback(async (e) => {
     e.preventDefault();
     if (!playerName.trim()) {
       setErrorMsg("Please enter a valid nickname");
@@ -68,42 +101,9 @@ const ResultScreen = ({ quizId, quizTitle, score, correct, wrong, percentage, qu
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [playerName, quizId, quizTitle, score, percentage]);
 
-  // Get custom messages based on performance
-  const getPerformanceDetails = () => {
-    if (percentage >= 90) {
-      return {
-        title: "Spectacular Achievement!",
-        message: "Unbelievable accuracy! You have completely mastered this topic.",
-        color: "text-emerald-500",
-        bg: "bg-emerald-500/10 border-emerald-500/20"
-      };
-    } else if (percentage >= 75) {
-      return {
-        title: "Brilliant Job!",
-        message: "Incredible score! Your hard work is clearly paying off.",
-        color: "text-indigo-500",
-        bg: "bg-indigo-500/10 border-indigo-500/20"
-      };
-    } else if (percentage >= 50) {
-      return {
-        title: "Nice Performance!",
-        message: "You did well! Try reading up on the incorrect explanations to get 100%.",
-        color: "text-amber-500",
-        bg: "bg-amber-500/10 border-amber-500/20"
-      };
-    } else {
-      return {
-        title: "Keep Learning!",
-        message: "Every mistake is a stepping stone. Review the answers and try again!",
-        color: "text-rose-500",
-        bg: "bg-rose-500/10 border-rose-500/20"
-      };
-    }
-  };
-
-  const perf = getPerformanceDetails();
+  const perf = useMemo(() => getPerformanceDetails(percentage), [percentage]);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 flex-grow">
